@@ -184,7 +184,7 @@ Class ExpoNotification {
 			$errors[] = 'Data indexes must be string';
 		}
 
-		if(count($this->data)){
+		if($this->data && count($this->data)){
 			if(strlen(json_encode($this->data)) > 4000){
 				$errors[] = 'Data exceeds 4kB limit';
 			}
