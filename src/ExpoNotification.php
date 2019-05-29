@@ -314,6 +314,7 @@ Class ExpoNotification {
 		// Loop through the response data
 		foreach($response['data'] as $index => $status){
 			$results['results'][] = [
+				'id' => $status['id'],
 				'token' => $this->tokens[$index],
 				'status' => $status['status'],
 				'message' => isset($status['message']) ? $status['message'] : 'Message successfully sent'
