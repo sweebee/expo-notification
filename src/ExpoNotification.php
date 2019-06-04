@@ -16,6 +16,7 @@ Class ExpoNotification {
 	private $badge;
 	private $data;
 	private $sound = 'default';
+	private $channel;
 
 	/**
 	 * The receivers (Expo tokens)
@@ -95,7 +96,18 @@ Class ExpoNotification {
 		$this->sound = $sound;
 		return $this;
 	}
-
+	
+	/**
+	 * @param $channel
+	 *
+	 * @return $this
+	 */
+	public function channel(string $channel)
+	{
+		$this-channel = $channel;
+		return $this;
+	}
+	
 	/**
 	 * If sending with test, users will get a silent notification,
 	 * all data such as title, body, data will be stripped.
@@ -270,6 +282,10 @@ Class ExpoNotification {
 			$m['body'] = $this->body;
 		}
 		$m['sound'] = $this->sound;
+		
+		if($this->channel){
+			$m['channelId'] = $this->channel;
+		}
 
 		return $m;
 	}
