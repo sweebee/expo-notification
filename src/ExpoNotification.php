@@ -104,7 +104,7 @@ Class ExpoNotification {
 	 */
 	public function channel(string $channel)
 	{
-		$this-channel = $channel;
+		$this->channel = $channel;
 		return $this;
 	}
 	
