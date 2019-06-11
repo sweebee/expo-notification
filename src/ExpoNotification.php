@@ -315,7 +315,7 @@ Class ExpoNotification {
 			return [
 				'status' => 'error',
 				'test' => $this->test,
-				'errors' => isset($response['errors']) ? $response['errors'] : [$result],
+				'errors' => $response['errors'] ?? [$result],
 				'results' => []
 			];
 		}
@@ -333,7 +333,7 @@ Class ExpoNotification {
 				'id' => $status['id'],
 				'token' => $this->tokens[$index],
 				'status' => $status['status'],
-				'message' => isset($status['message']) ? $status['message'] : 'Message successfully sent'
+				'message' => $status['message'] ?? 'Message successfully sent'
 			];
 		}
 
