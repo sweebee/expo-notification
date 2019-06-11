@@ -18,7 +18,9 @@ $result = $notification
 	->data([
 		'row' => 'item'
 	])
-	->badge(0)
+	->badge(1)
+	->channel('default')
+	->sound('default')
 	//->silent()
 	//->test()
 	->send();
