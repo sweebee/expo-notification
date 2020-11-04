@@ -30,6 +30,13 @@ Class ExpoNotification {
 		if(is_string($tokens)){
 			$tokens = [$tokens];
 		}
+		
+		foreach($tokens as $index => $token){
+			if(substr($token, 0, strlen('ExponentPushToken[')) !== 'ExponentPushToken['){
+				unset($tokens[$index]);
+			}
+		}
+		
 		$this->tokens = $tokens;
 		return $this;
 	}
@@ -184,12 +191,6 @@ Class ExpoNotification {
 
 		if(count($this->tokens) > 100){
 			$errors[] = 'Tokens exceed 100 limit';
-		}
-
-		foreach($this->tokens as $token){
-			if(substr($token, 0, strlen('ExponentPushToken[')) !== 'ExponentPushToken['){
-				$errors[] = "\"$token\" is an invalid push token";
-			}
 		}
 
 		if(isset($this->data[0])){
