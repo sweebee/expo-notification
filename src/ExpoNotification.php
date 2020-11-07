@@ -31,13 +31,12 @@ Class ExpoNotification {
 			$tokens = [$tokens];
 		}
 		
-		foreach($tokens as $index => $token){
-			if(substr($token, 0, strlen('ExponentPushToken[')) !== 'ExponentPushToken['){
-				unset($tokens[$index]);
+		foreach($tokens as $token){
+			if(substr($token, 0, strlen('ExponentPushToken[')) === 'ExponentPushToken['){
+				$this->tokens[] = $token;
 			}
 		}
 		
-		$this->tokens = $tokens;
 		return $this;
 	}
 
